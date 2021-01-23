@@ -49,4 +49,40 @@ module.exports = {
 
     return pullRequests;
   },
+  addLabelToPullRequest: async (token, owner, repo, id, label) => {
+    const octokit = github.getOctokit(token);
+
+    try {
+      await octokit.issues.addLabels({
+        owner,
+        repo,
+        issue_number: id,
+        labels: [label]
+      });
+
+      return true;
+    } catch (error) {
+      core.setFailed(`Add label request call failed: ${error}`);
+
+      return false;
+    }
+  },
+  removeLabelFromPullRequest: async (token, owner, repo, id, name) => {
+    const octokit = github.getOctokit(token);
+
+    try {
+      await octokit.issues.removeLabel({
+        owner,
+        repo,
+        issue_number: id,
+        name
+      });
+
+      return true;
+    } catch (error) {
+      core.setFailed(`Remove label request call failed: ${error}`);
+
+      return false;
+    }
+  },
 };
