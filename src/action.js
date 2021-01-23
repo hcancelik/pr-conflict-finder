@@ -1,13 +1,14 @@
 const api = require("./api");
 
 class Action {
-  constructor (token, owner, repo, conflictLabel, maxTries, waitMs) {
+  constructor (token, owner, repo, somethingTest, conflictLabel, maxTries, waitMs) {
     this.token = token;
     this.owner = owner;
     this.repo = repo;
     this.label = conflictLabel;
     this.maxTries = maxTries;
     this.waitMs = waitMs;
+    this.somethingTest = somethingTest;
   }
 
   async run (pr = null) {
