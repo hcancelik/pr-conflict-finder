@@ -1,9 +1,8 @@
 name: "units-test"
 on:
-  pull_request:
   push:
 jobs:
-  # unit tests
+  # unit tests - test
   units:
     runs-on: ubuntu-latest
     steps:
