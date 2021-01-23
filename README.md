@@ -23,7 +23,7 @@ jobs:
 ## Options
 |Option|Description|Default|
 |:-----|:----------|:------|
-|`conflict_label`|You can change the conflict label text with this option.|Has Conflict|
+|conflict_label|You can change the conflict label text with this option.|Has Conflict|
 |max_tries|Number of amounts will action try to get the status of PR merge status.|5|
 |wait_ms|Number of milliseconds action should wait between pools to check the status of PR merge status|5000|
 
