@@ -4,9 +4,14 @@ This action will check and label open PRs if they have a conflict.
 
 # Usage
 
+Make sure to update your main/master branch in the workflow file.
+
 ```yaml
-name: "review-tracker"
-on: pull_request_review
+name: "conflict-finder"
+on: 
+  pull_request:
+  push:
+    branches: [main]
 jobs:
   triage:
     runs-on: ubuntu-latest
