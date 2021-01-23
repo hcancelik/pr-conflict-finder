@@ -1,8 +1,6 @@
 name: "conflict-finder"
 on:
-  pull_request:
-  push:
-    branches: [main]
+  page_build:
 jobs:
   triage:
     runs-on: ubuntu-latest

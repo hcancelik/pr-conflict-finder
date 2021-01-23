@@ -1,6 +1,6 @@
 name: "units-test"
 on:
-  page_build:
+  push:
 jobs:
   # unit tests
   units:
