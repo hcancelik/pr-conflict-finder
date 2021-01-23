@@ -7,7 +7,6 @@ This action will check and label open PRs if they have a conflict.
 ```yaml
 name: "conflict-finder"
 on: 
-  pull_request:
   push:
 jobs:
   triage:
