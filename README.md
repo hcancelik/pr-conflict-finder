@@ -33,3 +33,6 @@ jobs:
 
 ## What are `max_tries` and `wait_ms` for?
 In order to check mergeability of a pull request, Github needs to create a test merge commit and this may take some time. That's why this action will wait for given amount of miliseconds (`wait_ms`) if the mergeability status is not ready and try to get it until maxiumum number of tries (`max_tries`) is reached.  
+
+
+No sense changes
