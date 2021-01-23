@@ -1,0 +1,39 @@
+{
+  "name": "pr-conflict-finder",
+  "version": "1.0.0",
+  "description": "Pull Request Conflict Finder",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "prepare": "ncc build index.js -o dist --source-map --license licenses.txt",
+    "test": "jest",
+    "all": "npm run lint && npm run prepare && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hcancelik/pr-conflict-finder.git"
+  },
+  "keywords": [
+    "Pull Request Conflict Finder",
+    "Pull Request Conflict",
+    "Pull Request",
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "author": "Hikmet Can Celik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hcancelik/pr-conflict-finder/issues"
+  },
+  "homepage": "https://github.com/hcancelik/pr-conflict-finder/issues#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.5",
+    "@actions/github": "^4.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.27.0",
+    "eslint": "^7.4.0",
+    "jest": "^26.6.3"
+  }
+}

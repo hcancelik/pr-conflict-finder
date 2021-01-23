@@ -1,0 +1,12 @@
+name: 'Pull Request Conflict Finder'
+description: 'Check pull requests for conflicts and label them'
+inputs:
+  secret_token:
+    description: 'Github secret token'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: tag
+  color: gray-dark
