@@ -4,6 +4,18 @@ inputs:
   secret_token:
     description: 'Github secret token'
     required: true
+  conflict_label:
+    description: 'Label to be used for PRs with conflicts'
+    required: true
+    default: 'Has Conflict'
+  max_tries:
+    description: 'Number of times the action should try to get the merge status'
+    required: true
+    default: "5"
+  wait_ms:
+    description: 'Number of millisecconds the action should wait between tries'
+    required: true
+    default: "5000"
 runs:
   using: 'node12'
   main: 'dist/index.js'

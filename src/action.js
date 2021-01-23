@@ -1,11 +1,13 @@
 const api = require("./api");
-const helper = require("./helper");
 
 class Action {
-  constructor (token, owner, repo) {
+  constructor (token, owner, repo, conflictLabel, maxTries, waitMs) {
     this.token = token;
     this.owner = owner;
     this.repo = repo;
+    this.label = conflictLabel;
+    this.maxTries = maxTries;
+    this.waitMs = waitMs;
   }
 
   async run (pr = null) {
@@ -17,11 +19,57 @@ class Action {
   }
 
   async checkPR (pr) {
-    // TODO
+    await this.checkMergeStatus(pr.number);
   }
 
   async checkAllPRs () {
-    // TODO
+    const pullRequests = await api.getOpenPullRequests(this.token, this.owner, this.repo);
+
+    for await (const pullRequest of pullRequests) {
+      await this.checkMergeStatus(pullRequest.number);
+    }
+  }
+
+  async checkMergeStatus(pullRequestNumber) {
+    let mergeStatus = null;
+    let pr;
+    let tries = 1;
+
+    while(mergeStatus === null && tries <= this.maxTries) {
+      pr = await api.getPullRequest(this.token, this.owner, this.repo, pullRequestNumber);
+
+      mergeStatus = pr.mergeable;
+
+      if (tries > 1 && mergeStatus === null) {
+        await new Promise(resolve => setTimeout(resolve, this.waitMs));
+      }
+
+      tries += 1;
+    }
+
+    if(mergeStatus) {
+      await this.removeLabel(pr);
+    } else {
+      await this.addLabel(pr);
+    }
+  }
+
+  async removeLabel(pullRequest) {
+    if (pullRequest.labels && pullRequest.labels.length > 0) {
+      if (pullRequest.labels.filter((label) => label.name === this.label).length > 0) {
+        await api.removeLabelFromPullRequest(this.token, this.owner, this.repo, pullRequest.number, this.label);
+      }
+    }
+  }
+
+  async addLabel(pullRequest) {
+    if (pullRequest.labels && pullRequest.labels.length > 0) {
+      if (pullRequest.labels.filter((label) => label.name === this.label).length > 0) {
+        return;
+      }
+    }
+
+    await api.addLabelToPullRequest(this.token, this.owner, this.repo, pullRequest.number, this.label);
   }
 }
 
