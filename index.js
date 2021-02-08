@@ -15,6 +15,8 @@ async function run() {
 
     if (github.payload && github.payload.pull_request) {
       pr = github.payload.pull_request;
+
+      core.info(JSON.stringify(github.payload));
     }
 
     const action = new Action(token, owner, repo, label, maxTries, waitMs);
