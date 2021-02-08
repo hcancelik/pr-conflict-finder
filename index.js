@@ -17,9 +17,8 @@ async function run() {
       pr = github.payload.pull_request;
 
       core.info(JSON.stringify(github.payload));
-      core.info(JSON.stringify(github));
 
-      // core.info("Skipping check because head is being merged");
+      core.info(JSON.stringify(github));
     }
 
     const action = new Action(token, owner, repo, label, maxTries, waitMs);
