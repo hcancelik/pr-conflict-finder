@@ -21,6 +21,7 @@ async function run() {
       core.info(JSON.stringify(github));
     }
 
+
     const action = new Action(token, owner, repo, label, maxTries, waitMs);
 
     await action.run(pr);
