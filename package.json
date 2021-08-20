@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/hcancelik/pr-conflict-finder/issues#readme",
   "dependencies": {
-    "@actions/core": "^1.2.7",
+    "@actions/core": "^1.5.0",
     "@actions/github": "^4.0.0"
   },
   "devDependencies": {
