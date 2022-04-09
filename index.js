@@ -19,6 +19,7 @@ async function run() {
       pr = github.payload.pull_request;
 
       core.info(JSON.stringify(github));
+      core.info(JSON.stringify(github.payload));
     }
 
 
