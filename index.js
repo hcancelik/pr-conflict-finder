@@ -10,7 +10,7 @@ async function run() {
     const waitMs = Number(core.getInput("WAIT_MS"));
 
     const { owner, repo } = github.repo;
-    core.info(token === null ? "No token provided" : "Token provided");
+    console.info(token === null ? "No token provided" : "Token provided");
 
     let pr = null;
 
