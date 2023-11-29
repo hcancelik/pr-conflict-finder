@@ -1,6 +1,6 @@
 {
   "name": "pr-conflict-finder",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Pull Request Conflict Finder",
   "main": "index.js",
   "scripts": {
